@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-theme {
+      background-color: #1e1e1e;
+      color: #ffffff;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 6px;
+      background-color: #f0f0f0;
+      color: #000000;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.2s;
+      min-height: 40px;
+    }
+
+    .dark-theme button {
+      background-color: #2d2d2d;
+      color: #ffffff;
+    }
+
+    button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .dark-theme button:hover {
+      background-color: #3d3d3d;
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .button-content {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .dark-theme .icon {
+      filter: invert(1);
+    }
+
+    .shortcut {
+      margin-left: auto;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .settings {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .dark-theme .settings {
+      border-top-color: #3d3d3d;
+    }
+
+    .settings-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    select {
+      width: 120px;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #e0e0e0;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .dark-theme select {
+      background-color: #2d2d2d;
+      border-color: #3d3d3d;
+      color: #ffffff;
+    }
+
+    .loading {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #000000;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .dark-theme .loading {
+      border: 2px solid #3d3d3d;
+      border-top: 2px solid #ffffff;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .notification {
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+
+    .notification.success {
+      background-color: #4caf50;
+      color: #ffffff;
+    }
+
+    .notification.error {
+      background-color: #f44336;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button id="captureFullPage">
+      <div class="button-content">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/>
+        </svg>
+        <span>Full Page</span>
+        <span class="shortcut">Ctrl+Shift+F</span>
+      </div>
+    </button>
+    <button id="captureVisibleArea">
+      <div class="button-content">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M3 3h18v2H3V3zm0 16h18v2H3v-2zm0-8h18v2H3v-2z"/>
+        </svg>
+        <span>Visible Area</span>
+        <span class="shortcut">Ctrl+Shift+V</span>
+      </div>
+    </button>
+  </div>
+
+  <div class="settings">
+    <div class="settings-row">
+      <label for="theme">Theme</label>
+      <select id="theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="system">System</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html> 
