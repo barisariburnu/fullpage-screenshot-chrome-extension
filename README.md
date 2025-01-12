@@ -58,5 +58,5 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 ## Contact Information
 
-- Email: baris.ariburnu@gmail.com
+- Email: barisariburnu@gmail.com
 - GitHub: https://github.com/barisariburnu/fullpage-screenshot-chrome-extension 

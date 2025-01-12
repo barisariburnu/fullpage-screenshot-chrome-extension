@@ -43,5 +43,4 @@ Support & Updates:
 • Detailed documentation
 
 For support or feature requests, contact:
-Email: baris.ariburnu@gmail.com
 GitHub: https://github.com/barisariburnu/fullpage-screenshot-fullpage-screenshot-chrome-extension
