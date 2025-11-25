@@ -43,4 +43,4 @@ Support & Updates:
 • Detailed documentation
 
 For support or feature requests, contact:
-GitHub: https://github.com/barisariburnu/fullpage-screenshot-fullpage-screenshot-chrome-extension
+GitHub: https://github.com/barisariburnu/fullpage-screenshot-chrome-extension

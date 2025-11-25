@@ -8,8 +8,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         return;
       }
 
-      // Chrome özel sayfalarında ekran görüntüsü alınamaz
-      if (tab.url.startsWith('chrome://') || tab.url.startsWith('fullpage-screenshot-chrome-extension://')) {
+      // Cannot capture screenshots on Chrome special pages
+      if (tab.url.startsWith('chrome://') || tab.url.startsWith(`chrome-extension://${chrome.runtime.id}/`)) {
         sendResponse({ success: false, error: 'Cannot capture screenshot of this page type' });
         return;
       }
@@ -39,26 +39,26 @@ chrome.commands.onCommand.addListener(async (command) => {
         <span>Capturing...</span>
       </div>
     `;
-    chrome.runtime.sendMessage({ 
-      action: 'showLoading', 
+    chrome.runtime.sendMessage({
+      action: 'showLoading',
       command,
-      buttonContent: loadingContent 
-    }).catch(() => {}); // Ignore error if popup is closed
+      buttonContent: loadingContent
+    }).catch(() => { }); // Ignore error if popup is closed
 
     await captureScreenshot(tab, command === 'capture_full_page');
 
     // Hide loading in popup if open
-    chrome.runtime.sendMessage({ 
-      action: 'hideLoading', 
-      command 
-    }).catch(() => {}); // Ignore error if popup is closed
+    chrome.runtime.sendMessage({
+      action: 'hideLoading',
+      command
+    }).catch(() => { }); // Ignore error if popup is closed
   } catch (error) {
     console.error('Screenshot failed:', error);
     // Hide loading in popup if open
-    chrome.runtime.sendMessage({ 
-      action: 'hideLoading', 
-      command 
-    }).catch(() => {});
+    chrome.runtime.sendMessage({
+      action: 'hideLoading',
+      command
+    }).catch(() => { });
   }
 });
 
@@ -184,4 +184,4 @@ async function captureScreenshot(tab, isFullPage = false) {
       }
     }
   }
-} 
+}
